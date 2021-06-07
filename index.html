@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | calulator app</title>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+  <div id="calulator">
+    <div id="cal__theme">
+      <div>THEME</div>
+      <div id="cal__themeSwitch">
+        <div id="cal__themeSwitchBtn" onclick="changeTheme(1)">1</div>
+        <div id="cal__themeSwitchBtn" onclick="changeTheme(2)">2</div>
+        <div id="cal__themeSwitchBtn" onclick="changeTheme(3)">3</div>
+      </div>
+    </div>
+
+
+    <div id="cal__screen">
+
+    </div>
+    <div id="cal__numPad">
+      <div class="cal__key" onclick="addKey(7);">7</div>
+      <div class="cal__key" onclick="addKey(8);">8</div>
+      <div class="cal__key" onclick="addKey(9);">9</div>
+      <div class="cal__key cal__key--del" onclick="delKey();">del</div>
+      <div class="cal__key" onclick="addKey(4);">4</div>
+      <div class="cal__key" onclick="addKey(5);">5</div>
+      <div class="cal__key" onclick="addKey(6);">6</div>
+      <div class="cal__key" onclick="addKey('+');">+</div>
+      <div class="cal__key" onclick="addKey(1);">1</div>
+      <div class="cal__key" onclick="addKey(2);">2</div>
+      <div class="cal__key" onclick="addKey(3);">3</div>
+      <div class="cal__key" onclick="addKey('-');">-</div>
+      <div class="cal__key" onclick="addKey('.');">.</div>
+      <div class="cal__key" onclick="addKey(0);">0</div>
+      <div class="cal__key" onclick="addKey('/');">/</div>
+      <div class="cal__key" onclick="addKey('*');">✖</div>
+      <div class="cal__key cal__key--reset" onclick="reset();">Reset</div>
+      <div class="cal__key cal__key--eql" onclick="result();">=</div>
+    </div>
+
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Vanessa</a>.
+    </div>
+
+  </div>
+
+  <script>
+    var thm = document.getElementById("calulator");
+    var src = document.getElementById('cal__screen')
+    var str = ''
+
+    function changeTheme(num) {
+      thm.className = '';
+      thm.classList.add("cal",  "cal--theme" + num);
+
+    }
+
+    function addKey(el) {
+      str += el
+      src.innerText = str
+    }
+
+    function result() {
+      str = eval(str)
+      src.innerText = str
+    }
+
+    function delKey() {
+      var strList = Array.from(str)
+      strList.splice(str.length - 1, 1)
+      str = strList.join('')
+      src.innerText = str
+    }
+
+    function reset() {
+      str = ''
+      src.innerText = ''
+    }
+
+    window.onload = function () {
+      src.innerText = '0'
+    }
+  </script>
+
+</body>
+
+</html>
